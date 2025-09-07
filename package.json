@@ -1,8 +1,8 @@
 {
   "name": "voxylauncher",
   "private": true,
-  "version": "0.0.0",
-  "main": "dist-electron/main.js",
+  "version": "0.0.1",
+  "main": "loader.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
