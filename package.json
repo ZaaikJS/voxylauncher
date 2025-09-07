@@ -1,0 +1,120 @@
+{
+  "name": "voxylauncher",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron": "electron .",
+    "electron:dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "build:electron": "tsc -p electron",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "prod": "vite build && electron-builder"
+  },
+  "dependencies": {
+    "@material-tailwind/react": "^3.0.0-beta.24",
+    "axios": "^1.7.9",
+    "better-sqlite3": "^11.8.1",
+    "bytenode": "^1.5.7",
+    "electron-updater": "^6.6.2",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.4.7",
+    "keytar": "^7.9.0",
+    "minecraft-launcher-core": "^3.18.2",
+    "minecraft-protocol": "^1.61.0",
+    "msmc": "^5.0.5",
+    "node-machine-id": "^1.1.12",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-fade-in": "^2.0.1",
+    "react-hot-toast": "^2.5.2",
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.4",
+    "unzipper": "^0.12.3",
+    "uuid": "^11.1.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@tailwindcss/postcss": "^4.0.1",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/follow-redirects": "^1.14.4",
+    "@types/node": "^22.12.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/unzipper": "^0.10.11",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "electron": "^34.0.2",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "follow-redirects": "^1.15.9",
+    "globals": "^15.14.0",
+    "postcss": "^8.5.1",
+    "sass-embedded": "^1.83.4",
+    "tailwindcss": "^4.0.1",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.5",
+    "vite-plugin-electron": "^0.29.0",
+    "wait-on": "^8.0.2"
+  },
+  "build": {
+    "appId": "com.zk.voxylauncher",
+    "productName": "VoxyLauncher",
+        "publish": [
+      {
+        "provider": "github",
+        "owner": "ZaaikJS",
+        "repo": "neoohapp"
+      }
+    ],
+    "protocols": [
+      {
+        "name": "VoxyLauncher",
+        "schemes": [
+          "voxy"
+        ]
+      }
+    ],
+    "directories": {
+      "output": "win"
+    },
+    "files": [
+      {
+        "from": "dist-electron",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "dist",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      },
+      "package.json"
+    ],
+    "mac": {
+      "target": "dmg",
+      "icon": "src/assets/icon.icns"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/icon.ico",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "src/assets/icon.png"
+    }
+  }
+}
